@@ -1,0 +1,22 @@
+<%= stylesheet_link_tag "application" %>
+
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="title">
+      <h1>Blogs</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="images">
+      <%= image_tag("fuji.png", class: 'img-responsive') if "fuji.png".present? %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="comment">
+      <p>個人的な体験や日記、特定のトピックに関する話題など自由に投稿できるサイトです。<br>気軽にご利用ください。</p>
+    </div>
+  </div>
+</div>

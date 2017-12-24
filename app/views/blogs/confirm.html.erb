@@ -1,15 +1,29 @@
-<h3>以下の内容で、送信する。</h3>
-    
-<%= form_with(model: @blog, url: blogs_path, local: true) do |form| %>
-    <%= form.hidden_field :title %>
-    <%= form.hidden_field :content %>
-    <p>タイトル：<%= @blog.title %></p>
-    <p>本文：<%= @blog.content %></p>
-    <%= form.submit "登録する" %>
-<% end %>
+<%= stylesheet_link_tag "application" %>
 
-<%= form_with(model: @blog, url: new_blog_path, local: true, method: 'get') do |form| %>
-    <%= form.hidden_field :title %>
-    <%= form.hidden_field :content %>
-    <%= form.submit "戻る", name: 'back' %>
-<% end %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="title">
+        <h1>以下の内容で、登録する。</h1>
+    </div>
+  </div>
+
+  <div  style="width:100%; height:430px; padding-top:10px; overflow-y:auto;">   
+    <%= form_with(model: @blog, url: blogs_path, local: true) do |form| %>
+        <%= form.hidden_field :title %>
+        <%= form.hidden_field :content %>
+        <%= form.hidden_field :user_id %>
+        <p>タイトル：</p>
+        <p style="font-size:1.5rem; word-wrap:break-word;"><%= @blog.title %></p>
+        <p>本文：</p>
+        <p style="font-size:1.5rem; word-wrap:break-word;"><%= @blog.content %></p>
+        <%= form.submit "登録する", :class => "btn btn-primary" %>
+    <% end %>
+
+    <%= form_with(model: @blog, url: new_blog_path, local: true, method: 'get') do |form| %>
+        <%= form.hidden_field :title %>
+        <%= form.hidden_field :content %>
+        <%= form.hidden_field :user_id %>
+        <%= form.submit "  戻る  ", name: 'back', :class => "btn btn-info" %>
+    <% end %>
+  </div>
+</div>

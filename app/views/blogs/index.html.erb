@@ -1,23 +1,42 @@
-<h1>ブログ一覧</h1>
+<%= stylesheet_link_tag "application" %>
 
-<p><%= notice %></p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="title">
+      <h1>ブログ一覧</h1>
+    </div>
+  </div>
 
-<table>
-    <tr>
-        <th>タイトル</th>
-        <th>内容</th>
-    </tr>
-    
-<% @blogs.each do |blog| %>
-    <tr>
-        <td><%= blog.title %></td>
-        <td><%= blog.content %></td>
-        <td><%= link_to "詳細を確認する", blog_path(blog.id) %></td>
-        <td><%= link_to "ブログを編集する", edit_blog_path(blog.id) %></td>
-        <td><%= link_to "ブログを削除する", blog_path(blog.id), method: :delete, data: {confirm: "本当に削除していいですか"} %></td>
-    </tr>
-<% end %>
-</table>
+  <div  style="height:450px; overflow-y:auto;">
+    <table style="table-layout:fixed; width:100%;">
+      <div class="row">
+          <tr class="blog_table">
+              <th class="col-sm-6 col-md-2", style="font-size:1.5rem; text-align:center;">タイトル</th>
+              <th class="col-sm-6 col-md-7", style="font-size:1.5rem; text-align:center;">内容</th>
+          </tr>
+      </div>
 
-<div><%= link_to "ブログ一覧画面に戻る", blogs_path %></div>
-<div><%= link_to "新しいブログを投稿する", new_blog_path %></div>
+      <div class="row">
+      <% @blogs.each do |blog| %>
+          <tr>
+              <td class="col-sm-12 col-md-2", style="font-size:1.5rem; word-wrap:break-word;"><%= blog.title %></td>
+              <td class="col-sm-12 col-md-7", style="font-size:1.5rem; word-wrap:break-word;"><%= blog.content %></td>
+              <td class="col-sm-4 col-md-1"><%= link_to "Love", blog_path(blog.id), method: :get, class: "btn btn-primary" %></td>
+              <td class="col-sm-4 col-md-1">
+                <% if current_user.id == blog.user_id %>
+                  <%= link_to "編集", edit_blog_path(blog.id), method: :get, class: "btn btn-success" %>
+                <% else %>
+                  <%= link_to "編集", edit_blog_path(blog.id), method: :get, class: "btn btn-success hidden" %>
+                <% end %></td>
+              <td class="col-sm-4 col-md-1">
+                <% if current_user.id == blog.user_id %>
+                  <%= link_to "削除", blog_path(blog.id), method: :delete, data: {confirm: "本当に削除していいですか"}, class: "btn btn-warning" %>
+                <% else %>
+                  <%= link_to "削除", blog_path(blog.id), method: :delete, data: {confirm: "本当に削除していいですか"}, class: "btn btn-warning hidden" %>
+                <% end %></td>
+          </tr>
+      <% end %>
+      </div>
+    </table>
+  </div>
+</div>

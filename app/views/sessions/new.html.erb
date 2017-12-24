@@ -1,0 +1,23 @@
+  <%= link_to "Sign up", new_user_path, class: "btn btn-success"  %>
+  <%= link_to "Login", new_session_path, class: "btn btn-primary"  %>
+
+
+  <h1>Log in</h1>
+  <%= form_with(scope: :session, url: sessions_path) do |f| %>
+
+  <div>
+    <%= f.label :email %>
+  </div>
+  <div>
+    <%= f.email_field :email %>
+  </div>
+
+  <div>
+    <%= f.label :password %>
+  </div>
+  <div>
+    <%= f.password_field :password %>
+  </div>
+
+    <%= f.submit "Log in", class: "btn btn-primary" %>
+  <% end %>
