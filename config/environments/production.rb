@@ -67,16 +67,16 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.default_url_options = { host: 'heroku-test-app-pcendo.c9users.io' }
+  config.action_mailer.default_url_options = { host: 'https://limitless-taiga-70254.herokuapp.com' }
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings =
   {
     user_name: ENV['SENDGRID_USERNAME'],
     password: ENV['SENDGRID_PASSWORD'],
-    domain: "example.com",
+    domain: "heroku.com",
     address: "smtp.SendGrid.net",
-    port: 2525,
+    port: 587,
     authentication: :plain,
     enable_starttls_auto: true
     }
