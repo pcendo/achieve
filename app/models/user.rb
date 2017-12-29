@@ -13,4 +13,6 @@ class User < ApplicationRecord
         return Blog.where(user_id: self.id)
     end
     
+    mount_uploader :image, ImageUploader
+    
 end

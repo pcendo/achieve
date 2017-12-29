@@ -2,6 +2,12 @@
 <p>タイトル： <%= @blog.title %></p>
 <p>内容： <%= @blog.content %></p>
 
+<% if @blog.image? %>
+  <%= image_tag @blog.image.url %>
+<% else %>
+  <%= image_tag 'noimage.gif' %>
+<% end %>
+
 <% unless @blog.user_id == current_user.id %>
   <% if @favorite.present? %>
     <%= link_to 'お気に入りを解除する', favorite_path(blog_id: @blog.id), method: :delete, class: 'btn btn-danger' %>

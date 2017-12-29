@@ -11,24 +11,34 @@
     <table style="table-layout:fixed; width:100%;">
       <div class="row">
           <tr class="blog_table">
+              <th class="col-sm-6 col-md-1", style="font-size:1.5rem; text-align:center;">作者</th>
               <th class="col-sm-6 col-md-2", style="font-size:1.5rem; text-align:center;">タイトル</th>
-              <th class="col-sm-6 col-md-7", style="font-size:1.5rem; text-align:center;">内容</th>
+              <th class="col-sm-6 col-md-6", style="font-size:1.5rem; text-align:center;">内容</th>
           </tr>
       </div>
 
       <div class="row">
       <% @favorites_blogs.each do |blog| %>
+      <% @user = User.find(blog.user_id) %>
           <tr>
+              <td class="col-sm-12 col-md-1" ><%= image_tag @user.image.thumb.url %></td>
               <td class="col-sm-12 col-md-2", style="font-size:1.5rem; word-wrap:break-word;"><%= blog.title %></td>
-              <td class="col-sm-12 col-md-7", style="font-size:1.5rem; word-wrap:break-word;"><%= blog.content %></td>
+              <td class="col-sm-12 col-md-6", style="font-size:1.5rem; word-wrap:break-word;"><%= blog.content %></td>
 
               <td class="col-sm-4 col-md-1"><%= link_to "Love", blog_path(blog.id), method: :get, class: "btn btn-primary hidden" %></td>
               <td class="col-sm-4 col-md-1"><%= link_to "編集", edit_blog_path(blog.id), method: :get, class: "btn btn-success hidden" %></td>
               <td class="col-sm-4 col-md-1"><%= link_to "削除", blog_path(blog.id), method: :delete, data: {confirm: "本当に削除していいですか"}, class: "btn btn-warning hidden" %></td>
 
           </tr>
-      <% end %>
       </div>
+      <div class="row" >
+          <tr>
+            <td>
+            　<%= image_tag blog.image.url %>
+            </td>
+          </tr>
+      </div>
+      <% end %>
     </table>
   </div>
 </div>

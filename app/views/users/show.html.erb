@@ -1,6 +1,13 @@
-  <%= link_to "Profile", user_path(current_user.id), class: "btn btn-info"  %>
-  <%= link_to "Logout", session_path(current_user.id), method: :delete, class: "btn btn-danger"  %>
-
-  <h1>Log in：<%= @user.name %></h1>
+  <%= link_to "Login", new_session_path, class: "btn btn-primary" %>
+  
+  <h1>ユーザ登録が完了しました‼</h1>  
+  
+  <h3>名前：<%= @user.name %></h3>
 
   <p>メールアドレス: <%= @user.email %></p>
+  
+　<% if @user.image? %>
+　　<%= image_tag @user.image.thumb.url %>
+　<% else %>
+　　<%= image_tag 'noimage.gif' %>
+　<% end %>

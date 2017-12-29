@@ -41,6 +41,16 @@
     <div>
       <%= f.password_field :password_confirmation %>
     </div>
-    <%= f.submit "Create my account", class: "btn btn-primary"  %>
+
+    <div>
+      <%= f.label :image %>
+      <%= image_tag @user.image.thumb.url if @user.image? %>
+    </div>
+    <div>
+      <%= f.file_field :image %>
+      <%= f.hidden_field :image_cache %>
+    </div>
+
+    <%= f.submit "Create my account", class: "btn btn-primary" %>
   <% end %>
   </div>
