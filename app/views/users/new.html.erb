@@ -44,10 +44,9 @@
 
     <div>
       <%= f.label :image %>
-      <%= image_tag @user.image.thumb.url if @user.image? %>
     </div>
     <div>
-      <%= f.file_field :image %>
+      <%= f.file_field :image, id: :user_image %>
       <%= f.hidden_field :image_cache %>
     </div>
 
