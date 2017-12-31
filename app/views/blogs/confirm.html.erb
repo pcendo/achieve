@@ -14,7 +14,8 @@
         <%= form.hidden_field :content %>
         <%= form.hidden_field :user_id %>
         <%= form.hidden_field :image %>
-
+        <%= hidden_field_tag :"cache[image]", @blog.image.cache_name %>
+        
         <p>タイトル：</p>
         <p style="font-size:1.5rem; word-wrap:break-word;"><%= @blog.title %></p>
         <p>本文：</p>
